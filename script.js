@@ -5,20 +5,41 @@
     let validNames = [
         "Sneha Singh",
         "Sneha",
-        "Sneha singh",
         "sneha singh",
-        "sneha"
+        "sneha",
+        "Sneha singh",
+        "sneha Singh"
     ];
 
-    // show span if input is valid Sneha name OR the stored name
-    if (validNames.includes(in2.value))
-    {
+    let trimmedName = in2.value.trim(); // Trim spaces
+
+    if (validNames.includes(trimmedName)) {
         span2.style.visibility = "visible";
         span2.style.animation = "fadein 1s forwards";
-    }
-    else
-     {
+    } else {
         span2.style.visibility = "hidden";
+    }
+}
+function login() {
+    let in2 = document.getElementById("in2");
+    let pwd = document.getElementById("pwd");
+
+    let allowedNames = [
+        "Sneha", 
+        "Sneha Singh", 
+        "sneha", 
+        "sneha singh",
+        "Sneha singh",
+        "sneha Singh"
+    ];
+
+    let trimmedName = in2.value.trim(); // Trim spaces
+
+    if (allowedNames.includes(trimmedName) && pwd.value === "Sneha@1234") {
+        document.getElementById("loginform").style.display = "none";
+        document.getElementById("dobform").style.display = "block";
+    } else {
+        alert("Wrong Username or Password!");
     }
 }
     function graph()
@@ -38,34 +59,7 @@
         container.appendChild(p);
     }
     }    
-  function login()
-  {
-  let in2 = document.getElementById("in2");
-let pwd = document.getElementById("pwd");
-// List of allowed names (you can add/remove as needed)
-    let allowedNames = [
-        "Sneha", 
-        "Sneha Singh", 
-        "sneha", 
-        "sneha singh", 
-        "Sneha singh",
-        "Sneha singh"
-         ];
-
-      if (allowedNames.includes(in2.value) && pwd.value=="Sneha@1234")
-      { 
-          const login =
-          document.getElementById("loginform")
-          login.style.display="none";
-          const dob=
-          document.getElementById("dobform")
-          dob.style.display="block";
-      }
-     else
-     {
-         alert("wrong Username or password!")   
-     }
-  }
+  
   function submitDob()
   {
      if (dob.value=="2004-09-11") 
