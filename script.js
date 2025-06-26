@@ -8,7 +8,8 @@
         "sneha singh",
         "sneha",
         "Sneha singh",
-        "sneha Singh"
+        "sneha Singh",
+        "Uday"
     ];
 
     let trimmedName = in2.value.trim(); // Trim spaces
@@ -38,7 +39,7 @@ function login() {
 
     if (allowedNames.includes(trimmedName) && pwd.value == "Sneha@2004" || pwd.value =="Uday@2005") {
         document.getElementById("loginform").style.display = "none";
-        document.getElementById("dobform").style.display = "block";
+        document.getElementById("dobform").style.display = "flex";
     } else {
         alert("Wrong Username or Password!");
     }
@@ -60,12 +61,17 @@ function login() {
         container.appendChild(p);
     }
     }    
-  
+  flatpickr("#dob", {
+    dateFormat: "d-m-Y" // This is DD-MM-YYYY format
+  });
   function submitDob()
   {
-     if (dob.value=="2004-09-11" || dob.value == "2005-01-05") 
+     if (dob.value=="11-09-2004" || dob.value == "05-01-2005") 
      {
          document.location="time.html";
+     }
+     else{
+         alert("incorrect Date Of Birth !!");
      }
   }
   function deselect(btn) {
