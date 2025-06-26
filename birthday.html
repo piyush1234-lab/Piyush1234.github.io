@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gift Box Surprise</title>
+  <link rel="stylesheet" href="birthday.css">
+</head>
+<body>
+
+  <div class="cake-container" id="cakeContainer">
+    <!-- Candle removed -->
+    <div class="gift-container" id="giftBox">
+      <div class="lid" id="lid">
+        <div class="ribbon-vertical"></div>
+        <div class="ribbon-horizontal"></div>
+        <div class="bow">
+          <div class="loop"></div>
+          <div class="knot"></div>
+          <div class="loop"></div>
+        </div>
+      </div>
+      <div class="gift-box">
+        <div class="ribbon-vertical"></div>
+        <div class="ribbon-horizontal"></div>
+      </div>
+    </div>
+  </div>
+
+  <button id="btn1" onclick="fire(); select(btn1);" ontouchstart="select(btn1)" ontouchend="deselect(btn1)">Open the Surprise</button>
+  <div class="txt">
+      <div class="txt1">Happy Birthday Sneha 🥳🥳</div>
+      <button id="btn2" onclick="select(btn2); window.location.href='card.html';" ontouchstart="select(btn2)" ontouchend="deselect(btn2)">click for more</button>
+  </div>
+  
+
+  <!-- Fireworks container with one div to be cloned -->
+  <div id="fireworks-container">
+    <div class="firework"></div>
+  </div>
+
+<script src="birthday.js">
+</script>
+</body>
+</html>

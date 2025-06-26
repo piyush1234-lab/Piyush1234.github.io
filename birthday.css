@@ -1,0 +1,335 @@
+body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .cake-container {
+    position: absolute;
+    top:900px;
+    left:50px;
+      position: relative;
+      margin: 120px auto 0;
+      width: 250px;
+      height: 250px;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      
+    }
+
+    .firework {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: yellow;
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    @keyframes explode {
+      to {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+      }
+    }
+
+    #fireworks-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    #btn1 {
+    position: relative;
+    left : 10px;
+    top: 850px;
+      margin-top: 30px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+  padding: 10px 20px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 0px 15px rgba(255, 255, 255, 0.3);
+  z-index: 999;
+    }
+
+    button:hover {
+      background: #e91e63;
+    }
+
+    /* Gift Box Styles */
+    .gift-container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      perspective: 1000px;
+    }
+
+    .gift-box {
+      position: absolute;
+      bottom: 0;
+      width: 160px;
+      height: 110px;
+      background: linear-gradient(to bottom, #e74c3c, #c0392b);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .ribbon-vertical, .ribbon-horizontal {
+      position: absolute;
+      background: linear-gradient(to bottom, #f9ca24, #f1c40f, #f39c12);
+      z-index: 2;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .ribbon-vertical {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    .ribbon-horizontal {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 14px;
+      border-radius: 10px;
+    }
+
+    .lid {
+      position: absolute;
+      top: 0;
+      left: -5px;
+      width: 170px;
+      height: 50px;
+      background: linear-gradient(to bottom, #e74c3c, #c0392b);
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+      transform-origin: right bottom;
+      transition: transform 1s ease;
+      z-index: 3;
+    }
+
+    .lid.open {
+      transform: rotate(180deg);
+    }
+
+    .lid .ribbon-vertical,
+    .lid .ribbon-horizontal {
+      position: absolute;
+      background: linear-gradient(to bottom, #f9ca24, #f1c40f, #f39c12);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .lid .ribbon-vertical {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 100%;
+    }
+
+    .lid .ribbon-horizontal {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 14px;
+    }
+
+    .bow {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      z-index: 5;
+    }
+
+    .knot {
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle at 30% 30%, #f1c40f, #f39c12);
+      border-radius: 50%;
+      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+      z-index: 6;
+    }
+
+    .loop {
+      width: 30px;
+      height: 20px;
+      background: radial-gradient(circle at 30% 30%, #f9ca24, #f39c12);
+      border-radius: 50% 50% 0 0;
+      margin: 0 2px;
+      transform: rotate(-30deg);
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .loop:last-child {
+      transform: rotate(30deg);
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(2deg); }
+      40% { transform: rotate(-2deg); }
+      60% { transform: rotate(2deg); }
+      80% { transform: rotate(-2deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .gift-container.shake {
+      animation: shake 0.5s ease-in-out;
+    }
+    .firework-launch {
+  position: absolute;
+  width: 4px;
+  height: 10px;
+  background: orange;
+  bottom: 0;
+  opacity: 1;
+  animation: launch 2s forwards;
+}
+
+@keyframes launch {
+  to {
+    transform: translateY(-1500px);
+    opacity: 0.7;
+  }
+}
+
+.firework-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: yellow;
+  border-radius: 50%;
+  opacity: 1;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 1;
+  }
+}
+.txt {
+  display: none;
+  flex-direction: column;
+  position:absolute;
+  top: 1000px;
+  align-items: center;
+  margin-top: 30px;
+  animation: zoomIn 2s ease forwards;
+  transform: scale(0); /* Start hidden */
+  opacity: 0;
+  z-index:999;
+}
+
+@keyframes zoomIn {
+  to {
+    transform: scale(1) translateY(-250px);
+    opacity: 1;
+  }
+}
+
+.txt1 {
+  font-size: 32px;
+  padding: 12px 24px;
+  color: #ffffff;
+text-shadow:
+  0 0 12px black;
+  background: linear-gradient(270deg, #ff00cc, #00ffff, #00ff66, #ffeb3b, #ff00cc);
+  background-size: 600% 600%;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: neonBackground 6s ease infinite, pulseGlow 6s ease infinite;
+  box-shadow:
+  0 0 10px rgba(255, 0, 204, 0.7),
+  0 0 20px rgba(0, 255, 255, 0.6),
+  0 0 30px rgba(0, 255, 102, 0.5),
+  0 0 40px rgba(255, 235, 59, 0.4),
+  inset 0 0 10px rgba(255, 255, 255, 0.1);
+  
+  font-weight: bold;
+  transform: scale(0);
+  transition: transform 0.8s ease;
+  z-index:999;
+}
+@keyframes neonBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(255, 0, 204, 0.6),
+      0 0 20px rgba(0, 255, 255, 0.5),
+      0 0 30px rgba(0, 255, 102, 0.4),
+      0 0 40px rgba(255, 235, 59, 0.3),
+      inset 0 0 10px rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(255, 0, 204, 0.9),
+      0 0 30px rgba(0, 255, 255, 0.8),
+      0 0 40px rgba(0, 255, 102, 0.7),
+      0 0 50px rgba(255, 235, 59, 0.6),
+      inset 0 0 15px rgba(255, 255, 255, 0.12);
+  }
+}
+#btn2 {
+font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0px 15px rgba(255, 255, 255, 0.3);
+  transition: background 0.3s, transform 0.3s;
+  z-index: 999;
+  position: relative;
+  top:20px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#btn2:hover {
+  background: #0097a7;
+  transform: scale(1.1);
+}
+@keyframes fadeout{
+    0% { 
+        opacity:1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
