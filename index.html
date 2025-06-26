@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Page title</title>
 <link rel="stylesheet" href="style.css">
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body onload="graph(); check()">
     <div id="sprinkle-container"></div>
@@ -25,10 +27,12 @@
  <div id="dobform">
     <h1>Provide Your Date of Birth <br><br><br>
     To verify it's Sneha Only </h1>
-    <input id="dob" type="date">
+    <input id="dob" type="text">
     <button id ="btn2" onclick="submitDob()" ontouchstart="select(btn2)" ontouchend="deselect(btn2)">proceed</button>
   </div>
   </div>
+  <!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 <script src="script.js"></script>
 </html>
