@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  
+  <title>Movable Cards</title>
+<link rel="stylesheet" href="card.css">
+</head>
+
+<body onload="blink()">
+    <p id="m42">Swipe Cards To Reveal Hidden Text</p>
+    <button id="btn" onclick="select(); window.location.href='envelop.html';" ontouchstart="select()" ontouchend="deselect()">click here for more</button>
+  <div class="card" id="card1" ontouchstart="startDrag(event, this)"></div>
+  <div class="card" id="card2" ontouchstart="startDrag(event, this)"></div>
+  <div class="card" id="card3" ontouchstart="startDrag(event, this)"></div>
+  <div class="card" id="card4" ontouchstart="startDrag(event, this)"></div>
+</body>
+<script src="card.js"></script>
+</html>

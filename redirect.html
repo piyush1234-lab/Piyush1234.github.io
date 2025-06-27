@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #0d1117;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 32px;
+      flex-direction: column;
+    }
+
+    .countdown {
+      font-size: 48px;
+      margin-top: 20px;
+      color: #00ffcc;
+    }
+    #d {
+    margin-bottom: 50px;
+      justify-content: center;
+      align-items: center;
+      background-color: #0d1117;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+      text-align: center;
+      font-weight: Bold;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div id="d">Thanks For Your Response,<br>
+Your Response Has Been Recorded And Sent To The Page Creator.</div>
+  <div>Redirecting To The Login Page In <span class="countdown">6</span> seconds...</div>
+
+  <script>
+    let countdown = 6;
+    const countdownElement = document.querySelector('.countdown');
+
+    const timer = setInterval(() => {
+      countdown--;
+      countdownElement.textContent = countdown;
+
+      if (countdown === 0) {
+        clearInterval(timer);
+        // 🔁 Replace the URL below with your target page
+        window.location.href = "index.html";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+<link rel="stylesheet" href="style.css">
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body onload="graph(); check()">
+    <div id="sprinkle-container"></div>
+    <div class="contain" id="d">
+        <div id="loginform">
+        <h1>plz login with the password provided</h1>
+        <p id="p1">Enter Your Username</p>
+    <input id="in2" type="text" placeholder="full name" oninput="check()">
+    <span id="spn">✅</span><br>
+    <p id="p2">Enter Password</p>
+    <div class="pwd-box">
+  <input id="pwd" type="password" placeholder="Password">
+  <label class="show-label">
+    <input type="checkbox" onclick="togglePwd()" id="showPwd"> Show
+  </label>
+  </div>
+  <button id ="btn1" onclick="login()" ontouchstart="select(btn1)" ontouchend="deselect(btn1)">proceed</button>
+    </div>
+ <div id="dobform">
+    <h1>Provide Your Date of Birth <br><br><br>
+    To verify it's Sneha Only </h1>
+    <input id="dob" type="text">
+    <button id ="btn2" onclick="submitDob()" ontouchstart="select(btn2)" ontouchend="deselect(btn2)">proceed</button>
+  </div>
+  </div>
+  <!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</body>
+<script src="script.js"></script>
+</html>
