@@ -8,8 +8,7 @@
         "sneha singh",
         "sneha",
         "Sneha singh",
-        "sneha Singh",
-        "Uday"
+        "sneha Singh"
     ];
 
     let trimmedName = in2.value.trim(); // Trim spaces
@@ -31,8 +30,7 @@ function login() {
         "sneha", 
         "sneha singh",
         "Sneha singh",
-        "sneha Singh",
-        "Uday"
+        "sneha Singh"
     ];
 
     let trimmedName = in2.value.trim(); // Trim spaces
@@ -66,7 +64,7 @@ function login() {
   });
   function submitDob()
   {
-     if (dob.value=="11-09-2004" || dob.value == "05-01-2005") 
+     if (dob.value=="11-09-2004") 
      {
          document.location="time.html";
      }
