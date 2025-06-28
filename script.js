@@ -9,7 +9,7 @@
         "sneha",
         "Sneha singh",
         "sneha Singh",
-"Uday"
+        "Uday"
     ];
 
     let trimmedName = in2.value.trim(); // Trim spaces
@@ -32,7 +32,7 @@ function login() {
         "sneha singh",
         "Sneha singh",
         "sneha Singh",
-"Uday"
+        "Uday"
     ];
 
     let trimmedName = in2.value.trim(); // Trim spaces
