@@ -68,7 +68,7 @@ function login() {
   {
      if (dob.value=="11-09-2004" || dob.value == "06-01-2005") 
      {
-         document.location="time.html";
+         document.location="birthday.html";
      }
      else{
          alert("incorrect Date Of Birth !!");
