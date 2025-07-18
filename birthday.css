@@ -5,7 +5,7 @@ body {
       color: white;
       font-family: sans-serif;
       text-align: center;
-      overflow: hidden;
+      overflow: auto;
       align-items: center;
       justify-content: center;
       flex-direction: column;
