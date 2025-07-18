@@ -40,7 +40,7 @@ position: relative;
     font-style: italic; 
     font-weight:bold;
     position: absolute;
-    top: 50px;
+    top: 5vh;
     visibility: visible;
 }
   #card1 {
@@ -58,3 +58,19 @@ position: relative;
   #card4 {
     background: url('2.jpg') center/cover no-repeat;
   }
+@media(max-width:768px){
+    .card{
+        width:100px;
+        height:100px;
+    }
+    #m42{
+        font-size:20px ;
+    }
+    #btn{
+        height: 4vh;
+        width:25vw;
+        font-size:.5rem;
+        padding:0 ;
+        
+    }
+}
