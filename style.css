@@ -136,7 +136,7 @@ box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
     background-position: center;
     background-size: cover;
     position:relative;
-    top:55px;
+    top:40px;
 }
 p{
     font-family: arial, sans-serif;
@@ -223,7 +223,7 @@ box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
 }
 #dobform1 {
   display: none;
-  flex-direction: column;
+  flex-direction: column;  
   align-items: center;
   gap: 15px; /* Adds even spacing between h1, input, button */
 }
