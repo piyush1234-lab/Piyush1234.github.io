@@ -39,8 +39,7 @@ function login() {
 
     if (allowedNames.includes(trimmedName) && pwd.value == "Sneha@2004" || pwd.value =="Uday@2005") {
         document.getElementById("loginform").style.display = "none";
-  document.getElementById("f1").style.display = "none";
-   document.getElementById("dobform1").style.display = "flex";
+   document.getElementById("dobform1").style.display = "block";
     } else {
         alert("Wrong Username or Password!");
     }
