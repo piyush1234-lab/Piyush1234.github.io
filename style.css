@@ -39,7 +39,7 @@
     100% {
         transform: translateY(-2000px) scale(2);
         opacity: 0;
-        
+
     }
 }
     .contain{
@@ -68,7 +68,7 @@ url(Screenshot_20241127-200523_Instagram.jpg);
     background-size: cover;
     justify-content:center;
     align-items:center;
-  
+
 }
 #in2 {
 box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
@@ -115,7 +115,7 @@ box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
     position:relative;
     top:50px;
     z-index: 5;
-    
+
 }
 #btn2{
     font-family: arial, sans-serif;
@@ -136,7 +136,7 @@ box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
     background-position: center;
     background-size: cover;
     position:relative;
-    top:40px;
+    top:55px;
 }
 p{
     font-family: arial, sans-serif;
@@ -156,7 +156,7 @@ p{
         position: relative;
         top:30px;
     }
-    
+
        @keyframes fadein
        {
            0% {
@@ -184,7 +184,7 @@ box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
     left: 70px;
     top: 250px;
     height:20px;
-    
+
 }
 
 .show-label {
@@ -208,7 +208,7 @@ box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
   width: 16px;
   height: 16px;
   z-index: 20;
-  
+
 }
 #dob{
 box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
