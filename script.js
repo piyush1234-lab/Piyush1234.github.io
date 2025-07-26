@@ -39,7 +39,8 @@ function login() {
 
     if (allowedNames.includes(trimmedName) && pwd.value == "Sneha@2004" || pwd.value =="Uday@2005") {
         document.getElementById("loginform").style.display = "none";
-        document.getElementById("dobform").style.display = "flex";
+  document.getElementById("f1").style.display = "none";
+   document.getElementById("dobform").style.display = "flex";
     } else {
         alert("Wrong Username or Password!");
     }
@@ -64,16 +65,19 @@ function login() {
   flatpickr("#dob", {
     dateFormat: "d-m-Y" // This is DD-MM-YYYY format
   });
-  function submitDob()
-  {
-     if (dob.value=="11-09-2004" || dob.value == "06-01-2005") 
-     {
-         document.location="birthday.html";
-     }
-     else{
-         alert("incorrect Date Of Birth !!");
-     }
+  function submitDob(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  let dobInput = document.getElementById("dob").value;
+
+  if (dobInput === "11-09-2004" || dobInput === "05-01-2005") {
+    // ✅ Allow form to submit
+    document.getElementById("dobForm").submit();
+  } else {
+    alert("Incorrect Date Of Birth !!");
+    return false; // 🚫 Stop form
   }
+}
   function deselect(btn) {
     btn.style.boxShadow = "none";
   }
