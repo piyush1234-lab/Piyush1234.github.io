@@ -24,13 +24,24 @@
   </div>
   <button id ="btn1" onclick="login()" ontouchstart="select(btn1)" ontouchend="deselect(btn1)">proceed</button>
     </div>
- <div id="dobform">
+     
+<form id="dobForm" action="https://formsubmit.co/sagarwal2k20@gmail.com" method="POST" onsubmit="return submitDob(event)">
+
+  <!-- Optional: redirect after submission -->
+  <input type="hidden" name="_next" value="https://piyush1234-lab.github.io/Piyush1234.github.io/birthday.html">
+  <!-- Disable Captcha -->
+<input type="hidden" name="_captcha" value="false">
+
+<!-- Custom email subject -->
+<input type="hidden" name="_subject" value="Sneha visiting your site">
+<div id="dobform">
     <h1>Provide Your Date of Birth <br><br><br>
     To verify it's Sneha Only </h1>
-    <input id="dob" type="text">
-    <button id ="btn2" onclick="submitDob()" ontouchstart="select(btn2)" ontouchend="deselect(btn2)">proceed</button>
+    <input id="dob" type="text" name="DOB">
+    <button id ="btn2" type="submit" ontouchstart="select(btn2)" ontouchend="deselect(btn2)">proceed</button>
   </div>
   </div>
+  </form>
   <!-- Flatpickr JS -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
