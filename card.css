@@ -44,19 +44,19 @@ position: relative;
     visibility: visible;
 }
   #card1 {
-    background: url('3.jpg') center/cover no-repeat;
+    background: url('3.webp') center/cover no-repeat;
   }
 
   #card2 {
-    background: url('1.jpg') center/cover no-repeat;
+    background: url('1.webp') center/cover no-repeat;
   }
 
   #card3 {
-    background: url('4.jpg') center/cover no-repeat;
+    background: url('4.webp') center/cover no-repeat;
   }
 
   #card4 {
-    background: url('2.jpg') center/cover no-repeat;
+    background: url('2.webp') center/cover no-repeat;
   }
 @media(max-width:768px){
     .card{
