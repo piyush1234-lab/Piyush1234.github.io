@@ -36,7 +36,7 @@ flaps.forEach(flap => {
   flap.style.backgroundColor="#fff4cc"
       flap.style.border="2px solid #f9e3b0"
 });
-}, 300);
+}, 100);
   document.getElementById("letter1").style.transform="rotateY(-180deg)";
   document.getElementById("loveForm").style.transform="rotateY(-180deg)";
   b1.style.transform="rotateY(-180deg)";
