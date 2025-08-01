@@ -70,6 +70,24 @@ url(6.webp);
     align-items:center;
 
 }
+#f1 {
+    font-family: arial, sans-serif;
+    font-size : 20px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+    display:flex;
+    margin: 20px;
+    padding:20px ;
+    top:40vh ;
+    justify-content: center;
+    text-shadow: 2px px 10px red;
+    
+    
+}
 #in2 {
 box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
     font-family: arial, sans-serif;
