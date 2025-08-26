@@ -71,6 +71,13 @@ setTimeout(() =>{
   btn.style.color = "black";
 }
 function deselect(btn) {
-  btn.style.backgroundColor = "rgba(255, 255, 255, 0.1);";
+  btn.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
   btn.style.color = "white";
 }
+// Run this when page loads
+window.onload = function(){
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    window.location.replace('index.html');
+  };
+  };
