@@ -91,9 +91,10 @@ function togglePwd() {
   }
 }
 // Run this when page loads //
-window.onload = function(){
+window.onload = function () {
+  // Clear the history stack so back won’t leave login page
   history.pushState(null, null, location.href);
   window.onpopstate = function () {
-    history.pushState(null, null, location.href);
+    history.go(1); // prevents going back from login
   };
-  };
+};
