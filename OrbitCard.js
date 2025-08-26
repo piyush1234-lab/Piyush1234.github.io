@@ -97,3 +97,35 @@ function stopTouch() {
   isDragging = false;
   orbit.classList.remove('paused'); // Resume rotation
 }
+const cards = document.querySelectorAll('.card');
+const total = cards.length;
+
+let radius;
+if (window.innerWidth < 480) {
+  radius = 200;
+} else if (window.innerWidth < 768) {
+  radius = 300;
+} else {
+  radius = 400;
+}
+
+// spread
+cards.forEach((card, index) => {
+  const angle = (360 / total) * index;
+  const finalTransform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+  card.style.setProperty("--final-transform", finalTransform);
+  card.style.animation = `spread 1s forwards`;
+  card.style.animationDelay = `${index * 0.2}s`;
+});
+
+// after spread → orbit
+setTimeout(() => {
+  document.querySelector('.orbit').classList.add('rotate');
+}, total * 200 + 1200);
+
+window.onload = function(){
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    window.location.replace('index.html');
+  };
+  };
