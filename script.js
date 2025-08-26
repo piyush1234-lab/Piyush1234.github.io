@@ -37,7 +37,7 @@ function login() {
 
     let trimmedName = in2.value.trim(); // Trim spaces
 
-    if (allowedNames.includes(trimmedName) && pwd.value == "Sneha@2004" || pwd.value =="Uday@2005") {
+    if (allowedNames.includes(trimmedName) && (pwd.value == "Sneha@2004" || pwd.value =="Uday@2005")) {
         document.getElementById("loginform").style.display = "none";
    document.getElementById("dobform1").style.display = "flex";
     } else {
@@ -90,3 +90,10 @@ function togglePwd() {
     pwd.type = "password"; // Hide the password
   }
 }
+// Run this when page loads //
+window.onload = function(){
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+  };
+  };
