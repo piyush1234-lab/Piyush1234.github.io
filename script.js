@@ -91,8 +91,12 @@ function togglePwd() {
   }
 }
 window.onload = function () {
+  // keep login as the first page
+  history.replaceState(null, null, location.href);
   history.pushState(null, null, location.href);
+
   window.onpopstate = function () {
-    history.pushState(null, null, location.href); // lock user here
+    // prevent going back from login
+    history.replaceState(null, null, location.href);
   };
 };
