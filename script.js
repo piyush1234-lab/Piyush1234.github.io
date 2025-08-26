@@ -90,11 +90,9 @@ function togglePwd() {
     pwd.type = "password"; // Hide the password
   }
 }
-// Run this when page loads //
 window.onload = function () {
-  // Clear the history stack so back won’t leave login page
   history.pushState(null, null, location.href);
   window.onpopstate = function () {
-    history.go(1); // prevents going back from login
+    history.pushState(null, null, location.href); // lock user here
   };
 };
