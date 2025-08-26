@@ -256,7 +256,7 @@
 }
 
 .txt1 {
-  font-size: 32px;
+  font-size: 25px;
   padding: 12px 24px;
   color: #ffffff;
 text-shadow:
@@ -278,6 +278,10 @@ text-shadow:
   transform: scale(0);
   transition: transform 0.8s ease;
   z-index:999;
+  white-space: normal;    /* ✅ allow wrapping */
+  word-break: break-word; /* ✅ break long words if needed */
+  max-width: 90%;         /* ✅ don’t let it grow too wide */
+  text-align: center;     /* ✅ keep text centered */
 }
 @keyframes neonBackground {
   0% { background-position: 0% 50%; }
@@ -336,7 +340,7 @@ font-family: Arial, sans-serif;
   width: 500px;
   height: 300px;
   background: #fff;
-  background-image: url('Sneha.webp');
+  background-image: url('sneha.webp');
   background-size: cover;
   background-position: top;
   border-radius: 10px;
