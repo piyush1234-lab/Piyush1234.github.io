@@ -90,13 +90,16 @@ function togglePwd() {
     pwd.type = "password"; // Hide the password
   }
 }
+// -------------------------
+// Back Button Prevention on Login
+// -------------------------
 window.onload = function () {
-  // keep login as the first page
-  history.replaceState(null, null, location.href);
-  history.pushState(null, null, location.href);
-
-  window.onpopstate = function () {
-    // prevent going back from login
+    // Keep login page sticky: back button does nothing
     history.replaceState(null, null, location.href);
-  };
+    history.pushState(null, null, location.href);
+
+    window.onpopstate = function () {
+        // lock user on login page
+        history.replaceState(null, null, location.href);
+    };
 };
