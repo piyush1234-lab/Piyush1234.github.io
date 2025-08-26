@@ -60,3 +60,9 @@ const btn =
   btn.style.backgroundColor = "#ff6f61";
   btn.style.color = "white";
 }
+window.onload = function(){
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    window.location.replace('index.html');
+  };
+  };
