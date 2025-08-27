@@ -33,13 +33,8 @@ function login() {
     let pwd = document.getElementById("pwd");
 
     let allowedNames = [
-        "Sneha", 
-        "Sneha Singh", 
-        "sneha", 
-        "sneha singh",
-        "Sneha singh", 
-        "sneha Singh", 
-        "Uday"
+        "Sneha", "Sneha Singh", "sneha", "sneha singh",
+        "Sneha singh", "sneha Singh", "Uday"
     ];
 
     let trimmedName = in2.value.trim();
@@ -129,7 +124,7 @@ window.onload = function() {
 
     // 🚨 If someone tries to open index while already "dobDone",
     // force them to re-login by clearing flag
-if (sessionStorage.getItem("dobDone") === "true") {
-    sessionStorage.removeItem("dobDone");
-}
+    if (sessionStorage.getItem("dobDone") === "true") {
+        sessionStorage.removeItem("dobDone");
+    }
 };
