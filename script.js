@@ -129,4 +129,7 @@ window.onload = function() {
 
     // 🚨 If someone tries to open index while already "dobDone",
     // force them to re-login by clearing flag
+if (sessionStorage.getItem("dobDone") === "true") {
+    sessionStorage.removeItem("dobDone");
+}
 };
