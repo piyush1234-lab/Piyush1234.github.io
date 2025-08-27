@@ -60,9 +60,20 @@ const btn =
   btn.style.backgroundColor = "#ff6f61";
   btn.style.color = "white";
 }
-window.onload = function(){
-  history.pushState(null, null, location.href);
-  window.onpopstate = function () {
-    window.location.replace('index.html');
-  };
-  };
+window.onload = function() {
+    // ✅ Allow only if DOB done
+    if (sessionStorage.getItem("dobDone") !== "true") {
+        window.location.replace("index.html");
+        return;
+    }
+
+    // Lock back button
+    history.replaceState(null, null, location.href);
+    history.pushState(null, null, location.href);
+
+    window.onpopstate = function() {
+        // If back pressed, send to login & clear session
+        sessionStorage.removeItem("dobDone");
+        window.location.replace("index.html");
+    };
+};
