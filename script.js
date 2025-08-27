@@ -33,8 +33,13 @@ function login() {
     let pwd = document.getElementById("pwd");
 
     let allowedNames = [
-        "Sneha", "Sneha Singh", "sneha", "sneha singh",
-        "Sneha singh", "sneha Singh", "Uday"
+        "Sneha", 
+        "Sneha Singh", 
+        "sneha", 
+        "sneha singh",
+        "Sneha singh", 
+        "sneha Singh", 
+        "Uday"
     ];
 
     let trimmedName = in2.value.trim();
