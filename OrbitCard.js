@@ -1,4 +1,4 @@
-// OrbitCard.js
+// orbitCard.js
 window.addEventListener("load", function () {
   // Allow only if logged in
   if (localStorage.getItem("isLoggedIn") !== "true") {
