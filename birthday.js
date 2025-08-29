@@ -1,18 +1,4 @@
-function checkLogin() {
-  if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.replace("index.html");
-  }
-}
 
-// Run on first load
-window.addEventListener("load", checkLogin);
-
-// Run when page is restored from cache (back/forward button)
-window.addEventListener("pageshow", function (event) {
-  if (event.persisted) {
-    checkLogin();
-  }
-});
 // -------------------------
 // Fireworks + Gift Animation
 // -------------------------
