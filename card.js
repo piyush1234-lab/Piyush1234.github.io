@@ -60,20 +60,17 @@ const btn =
   btn.style.backgroundColor = "#ff6f61";
   btn.style.color = "white";
 }
-window.onload = function() {
-    // ✅ Allow only if DOB done
-    if (sessionStorage.getItem("dobDone") !== "true") {
-        window.location.replace("index.html");
-        return;
-    }
+window.addEventListener("load", function () {
+  // Allow only if logged in
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.replace("index.html");
+    return;
+  }
 
-    // Lock back button
-    history.replaceState(null, null, location.href);
-    history.pushState(null, null, location.href);
-
-    window.onpopstate = function() {
-        // If back pressed, send to login & clear session
-        sessionStorage.removeItem("dobDone");
-        window.location.replace("index.html");
-    };
-};
+  // Back button lock
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    localStorage.removeItem("isLoggedIn");
+    window.location.replace("index.html");
+  };
+});
