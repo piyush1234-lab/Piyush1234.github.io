@@ -1,3 +1,18 @@
+// OrbitCard.js
+window.addEventListener("load", function () {
+  // Allow only if logged in
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.replace("index.html");
+    return;
+  }
+
+  // Back button lock
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    localStorage.removeItem("isLoggedIn");
+    window.location.replace("index.html");
+  };
+});
   const scene = document.getElementById('scene');
   let isDragging = false;
   let lastX, lastY;
