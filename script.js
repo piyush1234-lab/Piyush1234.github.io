@@ -49,26 +49,16 @@ function login() {
         alert("Wrong Username or Password!");
     }
 }
-
-/// -------------------------
-// DOB Submission
-// -------------------------
-// -------------------------
-// DOB Submission
-// -------------------------
 function submitDob(event) {
-  event.preventDefault(); // stop normal form submission
-
   let dobInput = document.getElementById("dob").value.trim();
 
   if (dobInput === "11-09-2004" || dobInput === "05-01-2005") {
-    // Save access flag
-    localStorage.setItem("isLoggedIn", "true");
-
-    // ✅ Now go to birthday page directly
-    window.location.href = "birthday.html";
+    // allow real submission
+    return true;  
   } else {
     alert("Incorrect Date Of Birth !!");
+    event.preventDefault(); // block form submission
+    return false;
   }
 }
 flatpickr("#dob", {
@@ -111,14 +101,3 @@ function togglePwd() {
     let pwd = document.getElementById("pwd");
     pwd.type = pwd.type === "password" ? "text" : "password";
 }
-window.addEventListener("load", function () {
-  // Always clear session when reaching login page
-  localStorage.removeItem("isLoggedIn");
-
-  // Prevent navigating back into a protected page
-  history.pushState(null, null, location.href);
-  window.onpopstate = function () {
-    // If user tries to go back from login → stay on login
-    history.pushState(null, null, location.href);
-  };
-});
