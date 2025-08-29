@@ -79,15 +79,13 @@ url(6.webp);
     align-items: center;
     position: relative;
     width: fit-content;    
-    display:block;
+    display:flex;
     margin: 20px;
     padding:20px ;
     top:40vh ;
     justify-content: center;
     text-shadow: 2px px 10px red;
-    
-    
-}
+    }
 #in2 {
 box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.7);
     font-family: arial, sans-serif;
