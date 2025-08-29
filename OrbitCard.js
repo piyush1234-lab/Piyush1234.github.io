@@ -137,24 +137,3 @@ cards.forEach((card, index) => {
 setTimeout(() => {
   document.querySelector('.orbit').classList.add('rotate');
 }, total * 200 + 1200);
-
-// -------------------------
-// birthday.js
-// -------------------------
-window.onload = function() {
-    // ✅ Allow only if DOB was done
-    if (sessionStorage.getItem("dobDone") !== "true") {
-        window.location.replace("index.html");
-        return;
-    }
-
-    // Lock back button
-    history.replaceState(null, null, location.href);
-    history.pushState(null, null, location.href);
-
-    window.onpopstate = function() {
-        // If back pressed → clear session + send to login
-        sessionStorage.removeItem("dobDone");
-        window.location.replace("index.html");
-    };
-};
