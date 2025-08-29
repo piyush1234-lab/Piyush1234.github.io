@@ -57,21 +57,23 @@ function login() {
 // DOB Submission
 // -------------------------
 function submitDob(event) {
-    event.preventDefault();
+  event.preventDefault(); // stop normal form submission
 
-    let dobInput = document.getElementById("dob").value;
+  let dobInput = document.getElementById("dob").value.trim();
 
-    if (dobInput === "11-09-2004" || dobInput === "05-01-2005") {
-        // ✅ Mark DOB as done in sessionStorage
-        sessionStorage.setItem("dobDone", "true");
+  if (dobInput === "11-09-2004" || dobInput === "05-01-2005") {
+    // Save access flag
+    localStorage.setItem("isLoggedIn", "true");
 
-        // ✅ Redirect to birthday page without storing DOB page in history
-        window.location.replace("birthday.html");
-    } else {
-        alert("Incorrect Date Of Birth !!");
-        return false;
-    }
+    // ✅ Now go to birthday page directly
+    window.location.href = "birthday.html";
+  } else {
+    alert("Incorrect Date Of Birth !!");
+  }
 }
+flatpickr("#dob", {
+  dateFormat: "d-m-Y"
+});
 // -------------------------
 // Sprinkle/Graph Effect
 // -------------------------
@@ -109,22 +111,37 @@ function togglePwd() {
     let pwd = document.getElementById("pwd");
     pwd.type = pwd.type === "password" ? "text" : "password";
 }
-// -------------------------
-// On page load
-// -------------------------
-window.onload = function() {
-    // Lock current page in history
-    history.replaceState(null, null, location.href);
+// index.js
+window.addEventListener("load", function () {
+  // ❌ Always clear session when reaching index
+  // (so that user must re-login if they try to open a protected page again)
+  localStorage.removeItem("isLoggedIn");
+
+  // 🔎 Get the last page (referrer) where the user came from
+  const ref = document.referrer;
+
+  // 🛡️ List of pages that require login
+  const protectedPages = [
+    "birthday.html",
+    "card.html",
+    "OrbitCard.html"
+  ];
+
+  // ✅ Instead of arrow function, use traditional function here
+  const cameFromProtected = protectedPages.some(function(page) {
+    // 'page' will be each element in protectedPages (e.g. "birthday.html")
+    // 'ref' is the previous URL
+    return ref.includes(page);  
+  });
+
+  // If user came from a protected page, block back navigation
+  if (cameFromProtected) {
+    // Add fake history entry
     history.pushState(null, null, location.href);
 
-    // Handle back button
-    window.onpopstate = function() {
-        history.replaceState(null, null, location.href);
+    // When back button is pressed, immediately push forward again
+    window.onpopstate = function () {
+      history.pushState(null, null, location.href); // stay on index
     };
-
-    // 🚨 If someone tries to open index while already "dobDone",
-    // force them to re-login by clearing flag
-    if (sessionStorage.getItem("dobDone") === "true") {
-        sessionStorage.removeItem("dobDone");
-    }
-};
+  }
+});
