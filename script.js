@@ -111,37 +111,14 @@ function togglePwd() {
     let pwd = document.getElementById("pwd");
     pwd.type = pwd.type === "password" ? "text" : "password";
 }
-// index.js
 window.addEventListener("load", function () {
-  // ❌ Always clear session when reaching index
-  // (so that user must re-login if they try to open a protected page again)
+  // Always clear session when reaching login page
   localStorage.removeItem("isLoggedIn");
 
-  // 🔎 Get the last page (referrer) where the user came from
-  const ref = document.referrer;
-
-  // 🛡️ List of pages that require login
-  const protectedPages = [
-    "birthday.html",
-    "card.html",
-    "OrbitCard.html"
-  ];
-
-  // ✅ Instead of arrow function, use traditional function here
-  const cameFromProtected = protectedPages.some(function(page) {
-    // 'page' will be each element in protectedPages (e.g. "birthday.html")
-    // 'ref' is the previous URL
-    return ref.includes(page);  
-  });
-
-  // If user came from a protected page, block back navigation
-  if (cameFromProtected) {
-    // Add fake history entry
+  // Prevent navigating back into a protected page
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    // If user tries to go back from login → stay on login
     history.pushState(null, null, location.href);
-
-    // When back button is pressed, immediately push forward again
-    window.onpopstate = function () {
-      history.pushState(null, null, location.href); // stay on index
-    };
-  }
+  };
 });
