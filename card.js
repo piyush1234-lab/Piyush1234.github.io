@@ -60,17 +60,18 @@ const btn =
   btn.style.backgroundColor = "#ff6f61";
   btn.style.color = "white";
 }
-window.addEventListener("load", function () {
-  // Allow only if logged in
+function checkLogin() {
   if (localStorage.getItem("isLoggedIn") !== "true") {
     window.location.replace("index.html");
-    return;
   }
+}
 
-  // Back button lock
-  history.pushState(null, null, location.href);
-  window.onpopstate = function () {
-    localStorage.removeItem("isLoggedIn");
-    window.location.replace("index.html");
-  };
+// Run on first load
+window.addEventListener("load", checkLogin);
+
+// Run when page is restored from cache (back/forward button)
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    checkLogin();
+  }
 });
