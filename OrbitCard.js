@@ -124,3 +124,13 @@ setTimeout(() => {
   document.querySelector('.orbit').classList.add('rotate');
 document.querySelector('.center-text').style.opacity=1;
 }, total * 200 + 100);
+
+window.onload = function () {
+    // Disable back button
+    history.pushState(null, null, location.href);
+
+    window.onpopstate = function () {
+        history.go(1); // stop back
+        
+    };
+};
