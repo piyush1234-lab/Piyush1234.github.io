@@ -122,4 +122,5 @@ cards.forEach((card, index) => {
 // after spread → orbit
 setTimeout(() => {
   document.querySelector('.orbit').classList.add('rotate');
-}, total * 200 + 1200);
+document.querySelector('.center-text').style.opacity=1;
+}, total * 200 + 100);
