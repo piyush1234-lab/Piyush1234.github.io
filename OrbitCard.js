@@ -1,4 +1,3 @@
-
   const scene = document.getElementById('scene');
   let isDragging = false;
   let lastX, lastY;
@@ -122,8 +121,9 @@ cards.forEach((card, index) => {
 // after spread → orbit
 setTimeout(() => {
   document.querySelector('.orbit').classList.add('rotate');
-document.querySelector('.center-text').style.opacity=1;
+ document.querySelector('.center-text').style.opacity=1;
 }, total * 200 + 100);
+
 
 window.onload = function () {
     // Disable back button
@@ -131,6 +131,6 @@ window.onload = function () {
 
     window.onpopstate = function () {
         history.go(1); // stop back
-        
+
     };
 };
