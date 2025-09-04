@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ Mobile Responsive -->
   <title>3D Rotating Scene</title>
-<link rel="stylesheet" href="OrbitCard.css">
+<link rel="stylesheet" href="style.css">
+  <script src="Dobenter.js"></script>
+<script src="Visitonce.js"></script>
 </head>
 <body
   onmousedown="startDrag(event)"
@@ -14,22 +15,26 @@
   ontouchstart="startTouch(event)"
   ontouchend="stopTouch()"
   ontouchmove="moveTouch(event)"
+  onload="msg()"
 >
+<div id="sta">
 <div class="stars"></div>
 <div class="stars2"></div>
 <div class="stars3"></div>
+</div>
+<audio id="au1" src="birthdaySong.mp3"></audio>
   <div class="scene" id="scene">
     <div class="orbit">
-      <img src="1.webp" class="card card-1">
-      <img src="2.webp" class="card card-2">
-      <img src="3.webp" class="card card-3">
-      <img src="4.webp" class="card card-4">
-      <img src="5.webp" class="card card-5">
+      <img src="1.jpg" class="card card-1">
+      <img src="2.jpg" class="card card-2">
+      <img src="3.jpg" class="card card-3">
+      <img src="4.jpg" class="card card-4">
+      <img src="5.jpg" class="card card-5">
       <div class="center-text">Hare Krishna Hare Krishna
     </div>      
     </div>
   </div>
 </body>
-<script src="OrbitCard.js">
+<script src="script.js">
 </script>
 </html>
