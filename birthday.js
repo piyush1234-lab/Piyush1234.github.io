@@ -1,7 +1,44 @@
+const typewriter = document.getElementById("typewriter");
+const text = typewriter.innerHTML;  // Save the full original text (with <br>)
+typewriter.innerHTML = "";          // Clear it to start typing
 
-// -------------------------
-// Fireworks + Gift Animation
-// -------------------------
+const speed = 50; // typing speed (ms per character)
+let i = 0;        // current character position
+let currentText = ''; // text typed so far
+
+function type() {
+  if (i < text.length) {
+    let char = text.charAt(i);  // get current character
+    currentText += char; // add this character to output
+
+    typewriter.innerHTML = currentText; // update what's shown on screen
+
+    i++; // move to next character let delay;
+setTimeout(type, speed);
+    // Delay only if NOT inside a tag
+    } else {
+    // After all typing is done, show the button
+    document.getElementById("btn2").style.animation = "fade 1s linear forwards";
+  }
+}
+
+document.getElementById("btn1").addEventListener("click", () => {
+  setTimeout(type, 1000)
+}); // Start typing effect
+
+
+function graph() {
+  const container = document.getElementById("sprinkle-container");
+  for (let i = 0; i < 15; i++) {
+    let p = document.createElement("div");
+    p.classList.add("particle");
+    p.innerText = "🎈";
+     p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = 2 + Math.random() * 3 + "s";
+        p.style.animationDelay = Math.random() * 2 + "s";
+        container.appendChild(p);
+  }
+}
 const lid = document.getElementById('lid');
 const giftBox = document.getElementById('giftBox');
 const btn1 = document.getElementById('btn1');
@@ -45,7 +82,18 @@ function explodeAt(x, y) {
 }
 
 function fire() {
-  giftBox.classList.add('shake');
+const container = document.getElementById("sprinkle-container");
+
+// Set up the transition
+container.style.transition = "opacity 0.8s ease";
+
+// Trigger fade-out
+container.style.opacity = 0;
+
+// Clear the container AFTER the transition completes
+setTimeout(() => {
+  container.innerHTML = "";
+}, 800); // match the transition duration  giftBox.classList.add('shake');
 
   setTimeout(() => {
     giftBox.classList.remove('shake');
