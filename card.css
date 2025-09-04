@@ -8,40 +8,84 @@ body {
     align-items: center;
     position: relative;
   }
+  .loader {
+  width: clamp(48px, 3vw, 80px);
+  height: clamp(48px, 3vw, 80px);
+  border: 5px solid #FFF; 
+  border-bottom-color: #FF3D00; 
+  border-radius: 50%; 
+  display: inline-block; 
+  box-sizing: border-box; 
+  animation: rotation 1s linear infinite;
+  z-index: 999;
+  }
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #ffd1b3;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+  @keyframes rotation { 
+  0% { 
+  transform: rotate(0deg);
+  }
+   100% {
+   transform: rotate(360deg);
+   }
+ } 
+ #loading-text {
+  margin-top: 15px;
+  font-size: clamp(14px, 3vw, 22px);
+  font-weight: bold;
+  color: #333;   /* dark text */
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
     .card {
-      width: 400px;
-      height: 400px;
       background-color: #fff;
       border: 2px solid #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       position: absolute;
       cursor: grab;
-      
+      visibility:hidden;
     }
 
   .card:hover {
       transform: scale(1.05);
   }
+/* Responsive Button */
 #btn {
-position: relative;
-  padding: 10px 20px;
+  position: relative;
+  padding: clamp(2px, 1vw, 15px) clamp(5px, 1vw, 15px);
+  width: clamp(110px, 25vw, 220px);
+  height: clamp(30px, 4vh, 60px);
   font-family: Arial, sans-serif;
-  font-size: 30px;
+  font-size: clamp(10px, 2vw, 28px);
   font-weight: bold;
   background-color: rgba(255,255,255,0.3);
   border: 2px solid black;
   border-radius: 10px;
   text-align: center;
   opacity: 1;
-  transform: scale(1);
+  visibility: hidden;
 }
-#m42{
-    font-size:40px; 
-    font-style: italic; 
-    font-weight:bold;
-    position: absolute;
-    top: 5vh;
-    visibility: visible;
+
+/* Responsive Blinking Text */
+#m42 {
+  font-size: clamp(16px, 4vw, 40px);
+  font-style: italic;
+  font-weight: bold;
+  position: absolute;
+  top: 5vh;
 }
   #card1 {
     background: url('3.webp') center/cover no-repeat;
@@ -58,19 +102,7 @@ position: relative;
   #card4 {
     background: url('2.webp') center/cover no-repeat;
   }
-@media(max-width:768px){
-    .card{
-        width:100px;
-        height:100px;
-    }
-    #m42{
-        font-size:20px ;
-    }
-    #btn{
-        height: 4vh;
-        width:25vw;
-        font-size:.5rem;
-        padding:0 ;
-        
-    }
-}
+.card {
+  width: clamp(140px, 25vw, 500px);
+  height: clamp(140px, 25vw, 500px);
+  }
