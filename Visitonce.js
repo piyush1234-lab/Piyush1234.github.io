@@ -1,5 +1,5 @@
  (function () {
- if(localStorage.getItem("DobDone") !== "true") 
+ if(sessionStorage.getItem("DobDone") !== "true") 
   {
       alert("you are required to login first !!");
       window.location.href="index.html"
@@ -8,7 +8,7 @@ return;
     // Get current page name (e.g., gift.html → "gift.html")
   const pageKey = "visited_" + window.location.pathname.split("/").pop();
 
-  if (localStorage.getItem(pageKey)) {
+  if (sessionStorage.getItem(pageKey)) {
       // Show message once the body exists (if this is in <head>)
       document.addEventListener("DOMContentLoaded", function () {
       document.body.style.backgroundColor="black"
@@ -27,5 +27,5 @@ return;
       }, 5000);
       return;
     }
-    localStorage.setItem(pageKey, true);
+    sessionStorage.setItem(pageKey, true);
   })(); 
