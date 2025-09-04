@@ -21,5 +21,5 @@
       }, 5000);
       return;
     }
-    localStorage.setItem("pageKey", "true");
+    localStorage.setItem(pageKey, true);
   })(); 
