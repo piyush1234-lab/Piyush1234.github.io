@@ -1,5 +1,8 @@
  (function () {
-    if (localStorage.getItem("visitedGift")) {
+    // Get current page name (e.g., gift.html → "gift.html")
+  const pageKey = "visited_" + window.location.pathname.split("/").pop();
+
+  if (localStorage.getItem(pageKey)) {
       // Show message once the body exists (if this is in <head>)
       document.addEventListener("DOMContentLoaded", function () {
       document.body.style.backgroundColor="black"
@@ -18,5 +21,5 @@
       }, 5000);
       return;
     }
-    localStorage.setItem("visitedGift", "true");
+    localStorage.setItem("pageKey", "true");
   })(); 
