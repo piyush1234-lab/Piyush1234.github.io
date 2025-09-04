@@ -28,11 +28,15 @@ let activeCard = null;
     function stop() {
       document.removeEventListener('touchmove', move);
       document.removeEventListener('touchend', stop);
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseup', stop);
       activeCard = null;
     }
 
     document.addEventListener('touchmove', move);
     document.addEventListener('touchend', stop);
+    document.addEventListener('mousemove', move);
+      document.addEventListener('mouseup', stop);
   }
     function blink()
     {
@@ -46,8 +50,8 @@ else
 {
 m42.style.visibility="visible"
 }
-setTimeout("blink()",1000);
-}
+setTimeout(blink,1000);
+}  
 function deselect(){
 const btn =
     document.getElementById("btn");
@@ -60,3 +64,35 @@ const btn =
   btn.style.backgroundColor = "#ff6f61";
   btn.style.color = "white";
 }
+const images = ['1.webp','2.webp','3.webp','4.webp'];
+let loaded = 0;   // counter for how many images finished loading
+
+images.forEach(src => {
+  const img = new Image();   // create a new <img> element in memory
+  img.src = src;             // start loading the image from file path (e.g. '1.webp')
+
+  img.onload = () => {       // when this image finishes loading successfully...
+    loaded++;                // increase the counter by 1
+
+    // Check if all images are done
+ if (loaded === images.length) {
+  // Fade out loader
+  const loader = document.getElementById('loader');
+  loader.style.opacity = '0';
+  
+  // Remove loader after fade animation
+  setTimeout(() => {
+    loader.style.display = 'none';
+  }, 700); // matches transition: 0.7s
+
+  // Show cards
+  document.querySelectorAll('.card').forEach(c => c.style.visibility = 'visible');
+
+  // Show button
+  document.getElementById('btn').style.visibility = 'visible';
+
+  // Show blinking message
+  document.getElementById('m42').style.visibility = 'visible';
+}
+  };
+});
