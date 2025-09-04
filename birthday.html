@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8" />
-  <title>Gift Box Surprise</title>
-  <link rel="preload" as="image" href="sneha.jpg" type="image/webp">
-  <link rel="stylesheet" href="birthday.css">
+  <meta charset="UTF-8" />
   
+  <title>Gift Box Surprise</title>
+  <link rel="preload" as="image" href="sneha.webp">
+  <link rel="stylesheet" href="birthday.css">
+  <script src="Dobenter.js"></script>
+<script src="Visitonce.js"></script>
 </head>
-<body>
+<body onload="graph()">
+    <div id="sprinkle-container"></div>
 <div class="cake-container" id="cakeContainer">
     <!-- Candle removed -->
     <div class="gift-container" id="giftBox">
@@ -35,7 +38,7 @@
 
 <div class="txt">
   <div id="photo"></div>
-  <div class="txt1">Happy Birthday sneha 🥳🥳</div>
+  <div class="txt1" id="typewriter">I quietly hope the days ahead bring you with joy and gentle surprises. May every dream you hold close, slowly blooms into reality. Even if my place is only in silence, my prayers for your happiness never fades. I wish your future shines brighter than you can imagine. No matter where life takes you, my heart will always cheer for you.</div>
   <button id="btn2" 
           onclick="select(this); window.location.href='card.html';" 
           ontouchstart="select(this)" 
