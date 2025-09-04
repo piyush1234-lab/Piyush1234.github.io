@@ -210,3 +210,7 @@ margin: 40px;
     opacity: 1;
   }
 }
+#sta{
+    opacity:0;
+    transition: opacity 0.5s ease;
+}
