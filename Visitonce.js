@@ -3,6 +3,7 @@
   {
       alert("you are required to login first !!");
       window.location.href="index.html"
+return;
   }
     // Get current page name (e.g., gift.html → "gift.html")
   const pageKey = "visited_" + window.location.pathname.split("/").pop();
