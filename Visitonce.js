@@ -1,4 +1,4 @@
- (function () {
+(function () {
  if(sessionStorage.getItem("DobDone") !== "true") 
   {
       alert("you are required to login first !!");
@@ -28,4 +28,12 @@ return;
       return;
     }
     localStorage.setItem(pageKey, true);
-  })(); 
+  })();
+
+// Re-check when user navigates back or forward
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        // Page is loaded from cache → reload to re-run script
+        window.location.reload();
+    }
+});
