@@ -1,4 +1,4 @@
-  const scene = document.getElementById('scene');
+const scene = document.getElementById('scene');
   let isDragging = false;
   let lastX, lastY;
   let rotateX = 0, rotateY = 0;
@@ -108,7 +108,8 @@ if (window.innerWidth < 480) {
 } else {
   radius = 400;
 }
-
+function startef(){
+document.getElementById("sta").style.opacity=1;
 // spread
 cards.forEach((card, index) => {
   const angle = (360 / total) * index;
@@ -123,14 +124,18 @@ setTimeout(() => {
   document.querySelector('.orbit').classList.add('rotate');
  document.querySelector('.center-text').style.opacity=1;
 }, total * 200 + 100);
-
-
-window.onload = function () {
-    // Disable back button
-    history.pushState(null, null, location.href);
-
-    window.onpopstate = function () {
-        history.go(1); // stop back
-
-    };
-};
+}
+function msg(){
+    alert("Interact with the cards by dragging or moving — adjust their position to explore and reveal the hidden message in full clarity.");
+    const au1 = document.getElementById("au1");
+    setTimeout(APlay, 1500);
+    startef();
+}
+function APlay(){
+    au1.play();
+}
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        au1.pause();
+    }
+});
