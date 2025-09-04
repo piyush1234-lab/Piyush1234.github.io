@@ -51,7 +51,7 @@ function submitDob(event) {
 
   if (dobInput === "11-09-2004" || dobInput === "05-01-2005") {
     // allow real submission
-    localStorage.setItem("DobDone", "true");
+    sessionStorage.setItem("DobDone", "true");
     return true;  
   } else {
     alert("Incorrect Date Of Birth !!");
