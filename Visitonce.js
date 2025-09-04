@@ -1,4 +1,9 @@
  (function () {
+ if(localStorage.getItem("DobDone") !== "true") 
+  {
+      alert("you are required to login first !!");
+      window.location.href="index.html"
+  }
     // Get current page name (e.g., gift.html → "gift.html")
   const pageKey = "visited_" + window.location.pathname.split("/").pop();
 
