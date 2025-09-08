@@ -148,8 +148,8 @@ function playAudioWithFadeIn() {
 
 function fadeInAudio() {
     let fadeIn = setInterval(() => {
-        if (audio.volume < .1) {
-            audio.volume = Math.min(audio.volume + 0.05, .1);
+        if (audio.volume < .5) {
+            audio.volume = Math.min(audio.volume + 0.05, .5);
         } else {
             clearInterval(fadeIn);
         }
