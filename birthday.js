@@ -127,3 +127,50 @@ function deselect(btn) {
   btn.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
   btn.style.color = "white";
 }
+
+const audio = document.getElementById("au1");
+
+function playAudioWithFadeIn() {
+    audio.volume = 0; 
+    audio.play();
+    fadeInAudio();
+
+    // Fade out 4s before the audio ends
+    audio.ontimeupdate = () => {
+        if (audio.duration && audio.currentTime >= audio.duration - 1.5) {
+            fadeOutAudio(() => {
+                audio.pause();
+                audio.currentTime = 0; // reset if you want it to replay
+            });
+        }
+    };
+}
+
+function fadeInAudio() {
+    let fadeIn = setInterval(() => {
+        if (audio.volume < .1) {
+            audio.volume = Math.min(audio.volume + 0.05, .1);
+        } else {
+            clearInterval(fadeIn);
+        }
+    }, 200); // ~4s fade-in
+}
+
+function fadeOutAudio(callback) {
+    let fadeOut = setInterval(() => {
+        if (audio.volume > 0) {
+            audio.volume = Math.max(audio.volume - 0.05, 0);
+        } else {
+            clearInterval(fadeOut);
+            audio.volume = 0;
+            if (callback) callback();
+        }
+    }, 200); // ~4s fade-out
+}
+
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        audio.pause();
+    }
+});
