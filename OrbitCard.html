@@ -21,7 +21,14 @@
 <div class="stars2"></div>
 <div class="stars3"></div>
 </div>
-<audio id="au1" src="birthdaySong.mp3"></audio>
+<audio id="au1" src="Birthday.mp3" loop preload="auto"></audio>
+<!-- Custom Message Box -->
+<div id="msgBox" class="msg-box">
+  <div class="msg-content">
+    <p>Interact with the cards by dragging or moving — adjust their position to explore and reveal the hidden message in full clarity.</p>
+    <button onclick="closeMsg()">OK</button>
+  </div>
+</div>
   <div class="scene" id="scene">
     <div class="orbit">
       <img src="Oc1.jpeg" class="card card-1">
@@ -34,6 +41,5 @@
     </div>
   </div>
 </body>
-<script src="OrbitCard.js">
-</script>
+<script src="OrbitCard.js"></script>
 </html>
