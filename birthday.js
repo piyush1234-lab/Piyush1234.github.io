@@ -129,46 +129,47 @@ function deselect(btn) {
 }
 
 const audio = document.getElementById("au1");
+let fadeTimer= null;
 
 function playAudioWithFadeIn() {
-    audio.volume = 0; 
+    audio.volume = 0;
+    audio.loop = false; // we’ll loop manually to control fade in/out
     audio.play();
     fadeInAudio();
 
-    // Fade out 4s before the audio ends
     audio.ontimeupdate = () => {
         if (audio.duration && audio.currentTime >= audio.duration - 1.5) {
             fadeOutAudio(() => {
-                audio.pause();
-                audio.currentTime = 0; // reset if you want it to replay
+                audio.currentTime = 0; 
+                audio.play();   // restart after fade-out
+                fadeInAudio();  // fade in again at start of next loop
             });
         }
     };
 }
 
 function fadeInAudio() {
-    let fadeIn = setInterval(() => {
-        if (audio.volume < .5) {
-            audio.volume = Math.min(audio.volume + 0.05, .5);
+    clearInterval(fadeTimer);
+    fadeTimer = setInterval(() => {
+        if (audio.volume < 0.1) {
+            audio.volume = Math.min(audio.volume + 0.05, 0.1);
         } else {
-            clearInterval(fadeIn);
+            clearInterval(fadeTimer);
         }
     }, 200); // ~4s fade-in
 }
 
 function fadeOutAudio(callback) {
-    let fadeOut = setInterval(() => {
+    clearInterval(fadeTimer);
+    fadeTimer = setInterval(() => {
         if (audio.volume > 0) {
             audio.volume = Math.max(audio.volume - 0.05, 0);
         } else {
-            clearInterval(fadeOut);
-            audio.volume = 0;
+            clearInterval(fadeTimer);
             if (callback) callback();
         }
     }, 200); // ~4s fade-out
 }
-
-
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
         audio.pause();
