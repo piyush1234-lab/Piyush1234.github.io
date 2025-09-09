@@ -4,17 +4,27 @@ typewriter.innerHTML = "";          // Clear it to start typing
 
 const speed = 50; // typing speed (ms per character)
 let i = 0;        // current character position
+let isTag = false; // are we inside an HTML tag?
 let currentText = ''; // text typed so far
 
 function type() {
   if (i < text.length) {
     let char = text.charAt(i);  // get current character
+
+    if (char === '<') isTag = true;    // starting a tag like <br>
+    if (char === '>') isTag = false;   // ending the tag
+
     currentText += char; // add this character to output
 
     typewriter.innerHTML = currentText; // update what's shown on screen
 
     i++; // move to next character let delay;
-setTimeout(type, speed);
+if (isTag) {
+  delay = 0;
+} else {
+  delay = speed;
+}
+setTimeout(type, delay);
     // Delay only if NOT inside a tag
     } else {
     // After all typing is done, show the button
