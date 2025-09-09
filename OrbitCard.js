@@ -125,17 +125,64 @@ setTimeout(() => {
  document.querySelector('.center-text').style.opacity=1;
 }, total * 200 + 100);
 }
-function msg(){
-    alert("Interact with the cards by dragging or moving — adjust their position to explore and reveal the hidden message in full clarity.");
-    const au1 = document.getElementById("au1");
-    setTimeout(APlay, 1500);
-    startef();
+function msg() {
+  // Show custom message box
+  document.getElementById("msgBox").style.display = "flex";
 }
-function APlay(){
-    au1.play();
+
+function closeMsg() {
+  // Hide message box
+  document.getElementById("msgBox").style.display = "none";
+  
+  // Continue the same flow as before
+  playAudioWithFadeIn();
+  startef();
+}
+
+const audio = document.getElementById("au1");
+let fadeTimer= null;
+
+function playAudioWithFadeIn() {
+    audio.volume = 0;
+    audio.loop = false; // we’ll loop manually to control fade in/out
+    audio.play();
+    fadeInAudio();
+
+    audio.ontimeupdate = () => {
+        if (audio.duration && audio.currentTime >= audio.duration - 1.5) {
+            fadeOutAudio(() => {
+                audio.currentTime = 0; 
+                audio.play();   // restart after fade-out
+                fadeInAudio();  // fade in again at start of next loop
+            });
+        }
+    };
+}
+
+function fadeInAudio() {
+    clearInterval(fadeTimer);
+    fadeTimer = setInterval(() => {
+        if (audio.volume < 0.1) {
+            audio.volume = Math.min(audio.volume + 0.05, 0.1);
+        } else {
+            clearInterval(fadeTimer);
+        }
+    }, 200); // ~4s fade-in
+}
+
+function fadeOutAudio(callback) {
+    clearInterval(fadeTimer);
+    fadeTimer = setInterval(() => {
+        if (audio.volume > 0) {
+            audio.volume = Math.max(audio.volume - 0.05, 0);
+        } else {
+            clearInterval(fadeTimer);
+            if (callback) callback();
+        }
+    }, 200); // ~4s fade-out
 }
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-        au1.pause();
+        audio.pause();
     }
 });
