@@ -28,7 +28,7 @@ setTimeout(type, delay);
     // Delay only if NOT inside a tag
     } else {
     // After all typing is done, show the button
-        document.getElementById("btn2").style.animation = "fade 1s 3.5s linear forwards";
+        document.getElementById("btn2").style.animation = "fade 1s 2s linear forwards";
   }
 }
 
