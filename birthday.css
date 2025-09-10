@@ -33,13 +33,6 @@
       opacity: 0;
     }
 
-    @keyframes explode {
-      to {
-        transform: translate(var(--x), var(--y));
-        opacity: 0;
-      }
-    }
-
     #fireworks-container {
       position: absolute;
       top: 0;
