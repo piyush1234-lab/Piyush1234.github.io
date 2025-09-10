@@ -1,5 +1,5 @@
 const birthdayMonth = 8; // August (0-based, so Jan = 0)
-const birthdayDate = 10;
+const birthdayDate = 11;
 const openHour = 0;
 const closeHour = 23;
 
