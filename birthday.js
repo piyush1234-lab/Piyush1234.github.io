@@ -28,14 +28,18 @@ setTimeout(type, delay);
     // Delay only if NOT inside a tag
     } else {
     // After all typing is done, show the button
-        document.getElementById("btn2").style.animation = "fade 1s 2s linear forwards";
+        document.getElementById("btn2").style.animation = "fade 1s linear forwards";
   }
 }
 
 document.getElementById("btn1").addEventListener("click", () => {
-  setTimeout(type, 1000)
-}); // Start typing effect
+  setTimeout(type, 1000);
 
+  // Fade in btn2 after 3 seconds (typing continues meanwhile)
+  setTimeout(() => {
+    document.getElementById("btn2").style.animation = "fade 1s linear forwards";
+  }, 5000);
+});
 
 function graph() {
   const container = document.getElementById("sprinkle-container");
