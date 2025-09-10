@@ -5,7 +5,8 @@
       color: white;
       font-family: sans-serif;
       text-align: center;
-      overflow: auto;
+      overflow-X: hidden;
+      overflow-Y: auto;
       align-items: center;
       justify-content: center;
       flex-direction: column;
