@@ -93,9 +93,10 @@ container.style.opacity = 0;
 // Clear the container AFTER the transition completes
 setTimeout(() => {
   container.innerHTML = "";
+}, 800);
+setTimeout(() => {
   giftBox.classList.add('shake');
-}, 50); // match the transition duration  giftBox.classList.add('shake');
-
+}, 10);
   setTimeout(() => {
     giftBox.classList.remove('shake');
     lid.classList.add('open');
