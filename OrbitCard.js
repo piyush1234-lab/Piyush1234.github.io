@@ -167,3 +167,8 @@ document.addEventListener("visibilitychange", () => {
         audio.pause();
     }
 });
+
+
+window.addEventListener("load", () => {
+  msg();
+});
