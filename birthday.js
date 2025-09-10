@@ -4,31 +4,21 @@ typewriter.innerHTML = "";          // Clear it to start typing
 
 const speed = 50; // typing speed (ms per character)
 let i = 0;        // current character position
-let isTag = false; // are we inside an HTML tag?
 let currentText = ''; // text typed so far
 
 function type() {
   if (i < text.length) {
     let char = text.charAt(i);  // get current character
-
-    if (char === '<') isTag = true;    // starting a tag like <br>
-    if (char === '>') isTag = false;   // ending the tag
-
     currentText += char; // add this character to output
 
     typewriter.innerHTML = currentText; // update what's shown on screen
 
     i++; // move to next character let delay;
-if (isTag) {
-  delay = 0;
-} else {
-  delay = speed;
-}
-setTimeout(type, delay);
+setTimeout(type, speed);
     // Delay only if NOT inside a tag
     } else {
     // After all typing is done, show the button
-    document.getElementById("btn2").style.animation = "fade 1s linear forwards";
+    document.getElementById("btn2").style.animation = "fade 1s 3.5s linear forwards";
   }
 }
 
@@ -104,7 +94,7 @@ container.style.opacity = 0;
 setTimeout(() => {
   container.innerHTML = "";
   giftBox.classList.add('shake');
-}, 10); // match the transition duration  giftBox.classList.add('shake');
+}, 50); // match the transition duration  giftBox.classList.add('shake');
 
   setTimeout(() => {
     giftBox.classList.remove('shake');
@@ -138,6 +128,9 @@ function deselect(btn) {
   btn.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
   btn.style.color = "white";
 }
+
+
+
 
 const audio = document.getElementById("au1");
 let fadeTimer= null;
