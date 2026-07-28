@@ -9,7 +9,8 @@ function check() {
         "sneha",
         "Sneha singh", 
         "sneha Singh", 
-        "Uday"
+        "Uday",
+"Sejal"
     ];
 
     let trimmedName = in2.value.trim();
@@ -31,13 +32,13 @@ function login() {
 
     let allowedNames = [
         "Sneha", "Sneha Singh", "sneha", "sneha singh",
-        "Sneha singh", "sneha Singh", "Uday"
+        "Sneha singh", "sneha Singh", "Uday", "Sejal"
     ];
 
     let trimmedName = in2.value.trim();
 
     if (allowedNames.includes(trimmedName) && 
-        (pwd.value == "Sneha@2004" || pwd.value =="Uday@2005")) {
+        (pwd.value == "Sneha@2004" || pwd.value =="Uday@2005" || pwd.value =="SejallKiJaiHo")) {
 
         // Hide login form and show DOB form
         document.getElementById("loginform").style.display = "none";
@@ -49,7 +50,7 @@ function login() {
 function submitDob(event) {
   let dobInput = document.getElementById("dob").value.trim();
 
-  if (dobInput === "11-09-2004" || dobInput === "05-01-2005") {
+  if (dobInput === "11-09-2004" || dobInput === "05-01-2005" || dobInput === "26-01-2003") {
     // allow real submission
     sessionStorage.setItem("DobDone", "true");
     return true;  
