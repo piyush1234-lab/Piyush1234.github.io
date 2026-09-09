@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ Mobile Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3D Rotating Scene</title>
-<link rel="stylesheet" href="OrbitCard.css">
+  <link rel="stylesheet" href="OrbitCard.css">
+   <script src="Dobenter.js"></script>
 <script src="Visitonce.js"></script>
+
 </head>
 <body
   onmousedown="startDrag(event)"
@@ -15,19 +17,23 @@
   ontouchend="stopTouch()"
   ontouchmove="moveTouch(event)"
 >
-<div id="sta">
-<div class="stars"></div>
-<div class="stars2"></div>
-<div class="stars3"></div>
-</div>
-<audio id="au1" src="Birthday.mp3" loop preload="auto"></audio>
-<!-- Custom Message Box -->
-<div id="msgBox" class="msg-box">
-  <div class="msg-content">
-    <p>Interact with the cards by dragging or moving — adjust their position to explore and reveal the hidden message in full clarity.</p>
-    <button onclick="closeMsg()">OK</button>
+  <div id="sta">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
   </div>
-</div>
+
+  <audio id="au1" src="Birthday.mp3" loop preload="auto"></audio>
+
+  <!-- Custom Message Box -->
+  <div id="msgBox" class="msg-box">
+    <div class="msg-content">
+      <p>Interact with the cards by dragging or moving — adjust their position to explore and reveal the hidden message in full clarity.</p>
+      <button onclick="closeMsg()">OK</button>
+    </div>
+  </div>
+
+  <!-- 3D Scene -->
   <div class="scene" id="scene">
     <div class="orbit">
       <img src="Oc1.jpeg" class="card card-1">
@@ -35,10 +41,17 @@
       <img src="Oc3.jpg" class="card card-3">
       <img src="Oc4.jpg" class="card card-4">
       <img src="Oc5.jpg" class="card card-5">
-      <div class="center-text">Happy Birthday Sneha
-    </div>      
+      
+      <div class="center-text">
+        Happy Birthday Sneha
+        <br>
+        <button class="date-btn" onclick="window.location.href='date.html'">Wanna Date ??</button>
+      </div>      
     </div>
   </div>
+
+<script src="OrbitCard.js">
+
+</script>
 </body>
-<script src="OrbitCard.js"></script>
 </html>
