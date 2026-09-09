@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Date Me?</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="Dobenter.js"></script>
+     <script src="Dobenter.js"></script>
 <script src="Visitonce.js"></script>
-    <style>
+
+       <style>
         * { box-sizing: border-box; }
         body {
             background-color: #ffd1b3;
@@ -172,7 +173,7 @@
         </form>
 
         <div id="success-box" style="display: none;">
-            <h1>Get ready! Piyush will soon msg u confirming the date. 🥳</h1>
+            <h1>Get ready! Piyush will soon msg u confirming the date and the Time. 🥳</h1>
         </div>
     </div>
 
@@ -229,9 +230,13 @@
             } else {
                 sendToServer(dataObject);
             }
+            setTimeout(() => {
+        window.location.href = "https://piyush1234-lab.github.io/Piyush1234.github.io/redirect.html"; 
+    }, 3500); // 3500ms = 3.5 seconds delay
+
             return false;
         }
-
+        
         function sendToServer(dataObject) {
             let form = document.getElementById("dateForm");
             let formData = new URLSearchParams(dataObject);
