@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  
   <title>Gift Box Surprise</title>
   <link rel="preload" as="image" href="sneha.jpg">
   <link rel="stylesheet" href="birthday.css">
-<script src="Visitonce.js"></script>
+  
 </head>
 <body onload="graph()">
-    <div id="sprinkle-container"></div>
-<div class="cake-container" id="cakeContainer">
-    <!-- Candle removed -->
+  <div id="sprinkle-container"></div>
+  <div class="cake-container" id="cakeContainer">
     <div class="gift-container" id="giftBox">
       <div class="lid" id="lid">
         <div class="ribbon-vertical"></div>
@@ -28,30 +26,34 @@
       </div>
     </div>
   </div>
-  <audio id="au1" src="Memories.mp3" preload="auto" loop>
-</audio>
- <button id="btn1" 
-        onclick="fire(); select(this); playAudioWithFadeIn()" 
-        ontouchstart="select(this)" 
-        ontouchend="deselect(this)">
-  Open the Surprise
-</button>
-
-<div class="txt">
-  <div id="photo"></div>
-  <div class="txt1" id="typewriter">Happy Birthday Sneha<br>I quietly hope the days ahead bring you with joy and gentle surprises. May every dream you hold close, slowly blooms into reality. Even if my place is only in silence, my prayers for your happiness never fades. I wish your future shines brighter than you can imagine. No matter where life takes you, my heart will always cheer for you.</div>
-  <button id="btn2" 
-          onclick="select(this); window.location.href='card.html';" 
+  
+  <audio id="au1" src="Memories.mp3" preload="auto" loop></audio>
+  
+  <button id="btn1" 
+          onclick="fire(); select(this); playAudioWithFadeIn()" 
           ontouchstart="select(this)" 
           ontouchend="deselect(this)">
-    click here for more
+    Open the Surprise
   </button>
+
+  <div class="txt">
+    <div id="photo"></div>
+    <div class="txt1" id="typewriter">Happy Birthday Sneha<br>I quietly hope the days ahead bring you with joy and gentle surprises. May every dream you hold close, slowly blooms into reality. Even if my place is only in silence, my prayers for your happiness never fades. I wish your future shines brighter than you can imagine. No matter where life takes you, my heart will always cheer for you.</div>
+    
+    <!-- Updated Button 2 -->
+    <button id="btn2" 
+            onclick="handleMoreClick(this)" 
+            ontouchstart="select(this)" 
+            ontouchend="deselect(this)">
+      click here for more
+    </button>
   </div>
-   <!-- Fireworks container with one div to be cloned -->
+  
   <div id="fireworks-container">
     <div class="firework"></div>
   </div>
-<script src="birthday.js">
-</script>
+
+  <!-- Put all JS logic here or in birthday.js -->
+  <script src="birthday.js"></script>
 </body>
 </html>
